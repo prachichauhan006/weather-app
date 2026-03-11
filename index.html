@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather App</title>
+  <style>
+    body {
+      background-color: #0b0f1a;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 { font-size: 36px; color: #38bdf8; }
+    input {
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-right: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #38bdf8;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 30px;
+      background-color: #121829;
+      padding: 24px;
+      border-radius: 16px;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Weather App</h1>
+  <input id="cityInput" placeholder="Enter city name"/>
+  <button onclick="getWeather()">Search</button>
+  <div id="result">Weather is shown here </div>
+
+  <script>
+
+    async function getWeather() {
+
+      // Step 1: city uthao input se
+      let city = document.getElementById("cityInput").value;
+
+      if (city === "") {
+        alert("Enter city name!");
+        return;
+      }
+
+      // Step 2: API URL banao
+      let apiKey = "c6aef3412ca987320f3cde1923ac9ca4";
+      let url = "https://api.openweathermap.org/data/2.5/weather?q=" 
+                + city + "&appid=" + apiKey + "&units=metric";
+
+      // Step 3: API ko call karo (fetch)
+      let response = await fetch(url);
+      let data = await response.json();
+
+      // Step 4: agar city nahi mili
+      if (data.cod !== 200) {
+        document.getElementById("result").innerHTML = 
+          "<p> City not found!</p>";
+        return;
+      }
+
+      // Step 5: data se values uthao
+      let temp     = data.main.temp;
+      let humidity = data.main.humidity;
+      let desc     = data.weather[0].description;
+      let name     = data.name;
+
+      // Step 6: result dikhao
+      document.getElementById("result").innerHTML = 
+        "<h2> " + name + "</h2>" +
+        "<h1> temp " + temp + "°C</h1>" +
+        "<p>" + desc + "</p>" +
+        "<p>💧 Humidity: " + humidity + "%</p>";
+    }
+
+  </script>
+</body>
+</html>
