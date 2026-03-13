@@ -7,7 +7,7 @@ A beautifully designed weather app with real-time data and weather-reactive anim
 
 ## ✨ Features
 - Real-time weather data for any city
-- Dynamic background that changes with weather conditions
+- Dynamic background that changes with weather conditions 
 - Rain, snow & storm particle animations
 - Glassmorphism UI design
 - Humidity, Feels Like & Wind speed stats
