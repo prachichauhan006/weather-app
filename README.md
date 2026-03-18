@@ -12,7 +12,7 @@ A beautifully designed weather app with real-time data and weather-reactive anim
 - Glassmorphism UI design
 - Humidity, Feels Like & Wind speed stats
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack  
 - HTML, CSS, JavaScript
 - OpenWeather API
 - Netlify (Deployment)
